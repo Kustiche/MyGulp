@@ -50,14 +50,77 @@ body
         width: 100%
         left: 0
 
+  &__sub-list
+    position: absolute
+    padding: 10px
+    min-width: 200px
+    top: 100%
+    left: 0
+    background-color: $black
+
+  &__sub-item
+    margin-bottom: 10px
+    &:last-child
+      margin-bottom: 0
+
+  &__sub-link
+    position: relative
+    &::after
+      position: absolute
+      content: ""
+      width: 0
+      border-top: 2px solid white
+      top: 100%
+      left: 50%
+      transition: all .4s
+      transform: translateX(-50%)
+    &:hover
+      &::after
+        width: 100%
+
+  &__arrow
+    display: none
+
 /*-------------------------*/
+body.pc
+
+  .menu
+
+    &__item
+      &:hover .menu__sub-list
+        opacity: 1
+        visibility: visible
+        transform: translate(0, 0)
+        pointer-events: all
 
 body.touch
 
   .menu
 
+    &__item
+      display: flex
+      align-items: center
+
+      &.active
+        .menu__sub-list
+          opacity: 1
+          visibility: visible
+          transform: translate(0, 0)
+          pointer-events: all
+        .menu__arrow
+          transform: rotate(-180deg)
+
     &__link
       flex: 1 1 auto
+
+    &__arrow
+      display: block
+      margin-left: 5px
+      width: 0
+      height: 0
+      border-left: 5px solid transparent
+      border-right: 5px solid transparent
+      border-top: 10px solid white
       transition: transform .4s ease 0s
 
 /*-------------------------*/
@@ -74,6 +137,13 @@ body.touch
       color: $white
       &:last-child
         margin-right: 0
+
+    &__sub-list
+      transform: translate(0, 10%)
+      opacity: 0
+      visibility: hidden
+      pointer-events: none
+      transition: all .4s ease 0s
 
 @media screen and ( max-width: 940px )
   .burger
@@ -140,3 +210,20 @@ body.touch
       font-size: 24px
       &:last-child
         margin-bottom: 0
+
+    &__item
+
+      &.active
+        .menu__sub-list
+          display: block
+
+    &__sub-list
+      position: relative
+      background-color: $white
+      flex: 1 1 100%
+      margin-top: 20px
+      display: none
+
+    &__sub-item
+      font-size: 20px
+      color: $black
