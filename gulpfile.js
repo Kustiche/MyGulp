@@ -7,7 +7,8 @@ const autoprefixer = require('gulp-autoprefixer');
 const fileinclude = require('gulp-file-include');
 const imagemin = require('gulp-imagemin');
 const ghPages = require('gulp-gh-pages');
-const svgSprite = require('gulp-svg-sprite')
+const svgSprite = require('gulp-svg-sprite');
+const gulpZip = require('gulp-zip')
 
 function clean() {
   return del(['build/*'])
@@ -127,6 +128,14 @@ function deploy() {
   .pipe(ghPages())
 }
 
+function zip() {
+  del(['./build.zip'])
+  return src('./build/**/*.*')
+    .pipe(gulpZip('build.zip'))
+    .pipe(dest('./'))
+}
+
 exports.default = series(clean, html, styles, img, svgSprites, js, resources, watching);
 exports.build = series(clean, html, stylesBuild, imgBuild, svgSprites, js, resources);
 exports.gh = deploy;
+exports.zip = zip;
