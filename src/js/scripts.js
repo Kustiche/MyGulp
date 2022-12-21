@@ -1,1 +1,1 @@
-@include('../components/header-submenu/header.js')
+@include('../components/header/header.js')

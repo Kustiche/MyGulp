@@ -129,9 +129,6 @@ body.touch
       left: 0
 
   .menu
-    display: flex
-    flex-direction: column
-    align-items: flex-start
 
     &__item
       flex-wrap: wrap
@@ -139,3 +136,6 @@ body.touch
       font-size: 24px
       &:last-child
         margin-bottom: 0
+      &:hover
+        &::after
+          width: 0
