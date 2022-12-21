@@ -156,7 +156,7 @@ body.touch
     &::before, &::after, &__line
       position: absolute
       left: 0
-      height: 1px
+      border-top: 1px solid $white
       width: 100%
       transition: all .4s ease 0s
       background-color: $white
@@ -211,11 +211,14 @@ body.touch
       &:last-child
         margin-bottom: 0
 
-    &__item
-
       &.active
         .menu__sub-list
           display: block
+
+    &__link
+      &:hover
+        &::after
+          width: 0
 
     &__sub-list
       position: relative
