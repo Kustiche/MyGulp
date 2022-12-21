@@ -34,9 +34,6 @@ body
   &__item
     position: relative
     color: $white
-
-  &__link
-    position: relative
     &::after
       position: absolute
       content: ""
@@ -85,7 +82,7 @@ body.touch
     &::before, &::after, &__line
       position: absolute
       left: 0
-      height: 1px
+      border-top: 1px solid $white
       width: 100%
       transition: all .4s ease 0s
       background-color: $white
@@ -132,6 +129,9 @@ body.touch
       left: 0
 
   .menu
+    display: flex
+    flex-direction: column
+    align-items: flex-start
 
     &__item
       flex-wrap: wrap
